@@ -1,0 +1,32 @@
+[
+  {
+    "id": "ALR-1001",
+    "service": "checkout-api",
+    "name": "HighErrorRate",
+    "severity": "critical",
+    "summary": "5xx error rate above 5% for 10 minutes",
+    "value": "12.4% 5xx",
+    "started_at": "2026-10-02T09:12:00Z",
+    "runbook_id": "RB-ERR-5XX"
+  },
+  {
+    "id": "ALR-1002",
+    "service": "payments-db",
+    "name": "HighCPU",
+    "severity": "warning",
+    "summary": "Primary CPU above 85% for 15 minutes",
+    "value": "92% CPU",
+    "started_at": "2026-10-02T09:05:00Z",
+    "runbook_id": "RB-DB-CPU"
+  },
+  {
+    "id": "ALR-1003",
+    "service": "search-svc",
+    "name": "HighLatency",
+    "severity": "warning",
+    "summary": "p99 latency above 1.5s for 5 minutes",
+    "value": "p99 2.4s",
+    "started_at": "2026-10-02T09:20:00Z",
+    "runbook_id": "RB-LATENCY"
+  }
+]

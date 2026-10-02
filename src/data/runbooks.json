@@ -1,0 +1,28 @@
+{
+  "RB-ERR-5XX": {
+    "title": "Elevated 5xx errors on an API service",
+    "steps": [
+      "Check for a deploy in the 30 minutes before the alert started.",
+      "If a deploy matches, roll back to the previous version and watch the error rate for 10 minutes.",
+      "If no deploy matches, check downstream dependencies (database, payment provider) for errors.",
+      "Escalate to the owning team if the error rate stays above 5% after 20 minutes."
+    ]
+  },
+  "RB-DB-CPU": {
+    "title": "High CPU on a primary database",
+    "steps": [
+      "List the top queries by CPU time from the slow query log.",
+      "Check whether a new query pattern started after a recent deploy.",
+      "If one query dominates, add the missing index or throttle the caller.",
+      "Do not fail over unless CPU stays above 95% for 10 minutes."
+    ]
+  },
+  "RB-LATENCY": {
+    "title": "High p99 latency",
+    "steps": [
+      "Compare p50 and p99. If only p99 is high, look for a slow dependency or GC pauses.",
+      "Check pod CPU throttling and recent autoscaling events.",
+      "Scale out by two replicas if CPU throttling is above 20%."
+    ]
+  }
+}

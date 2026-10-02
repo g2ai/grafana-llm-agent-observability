@@ -1,0 +1,17 @@
+{
+  "checkout-api": {
+    "error_rate_pct": {"window": "last 30m, 5m steps", "values": [0.3, 0.4, 0.3, 6.8, 11.9, 12.4]},
+    "p99_latency_ms": {"window": "last 30m, 5m steps", "values": [310, 320, 305, 340, 360, 355]},
+    "recent_deploys": [{"version": "v2.14.0", "deployed_at": "2026-10-02T09:04:00Z", "by": "ci-pipeline"}]
+  },
+  "payments-db": {
+    "cpu_pct": {"window": "last 30m, 5m steps", "values": [41, 44, 78, 88, 91, 92]},
+    "recent_deploys": []
+  },
+  "search-svc": {
+    "p99_latency_ms": {"window": "last 30m, 5m steps", "values": [620, 640, 900, 1700, 2300, 2400]},
+    "p50_latency_ms": {"window": "last 30m, 5m steps", "values": [90, 95, 92, 94, 96, 93]},
+    "cpu_throttling_pct": {"window": "last 30m, 5m steps", "values": [2, 3, 12, 25, 31, 33]},
+    "recent_deploys": []
+  }
+}
