@@ -34,13 +34,15 @@ logging.basicConfig(level=logging.WARNING, format="%(levelname)s %(name)s: %(mes
 
 MODEL = os.getenv("ANTHROPIC_MODEL", "claude-haiku-4-5-20251001")
 AGENT_NAME = "sre-triage-agent"
-AGENT_VERSION = "0.2.0"
+AGENT_VERSION = "0.3.0"
 MAX_STEPS = 5  # max LLM calls per run, stops runaway tool loops
 
 SYSTEM_PROMPT = (
     "You are an SRE triage assistant. Use the tools to look up alerts, metrics and runbooks "
-    "before answering. Only state facts that appear in tool results, and cite alert IDs and "
-    "runbook IDs. If the tools do not give you enough information, say so. "
+    "before answering. Before you name a likely cause, call query_metrics for the service with "
+    "the most severe alert and check its recent deploys. Only state facts that appear in tool "
+    "results, and cite alert IDs and runbook IDs. Do not link alerts to each other unless a tool "
+    "result shows the link. If the tools do not give you enough information, say so. "
     "Answer in under 120 words with three parts: Summary, Likely cause, Next steps."
 )
 
