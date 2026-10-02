@@ -216,3 +216,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# poc-01 secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.venv/
