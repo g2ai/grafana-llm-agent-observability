@@ -217,7 +217,7 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-# poc-01 secrets
+# local secrets
 .env
 .env.*
 !.env.example

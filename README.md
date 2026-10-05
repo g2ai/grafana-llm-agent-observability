@@ -1,4 +1,6 @@
-# SRE triage agent, observed with Grafana Cloud Agent Observability
+# Grafana LLM Agent Observability
+
+An SRE triage agent, observed with Grafana Cloud Agent Observability.
 
 A small Python agent on Claude Haiku answers "what is firing and what do I do first?" using mock alert, metric and runbook tools. Every LLM call, tool call and answer is sent to Grafana Cloud Agent Observability, where online evaluators score the answers and an alert fires when quality drops.
 
@@ -6,7 +8,7 @@ A small Python agent on Claude Haiku answers "what is firing and what do I do fi
 
 An LLM agent can return HTTP 200, use its tools, sound confident and still be wrong. Latency, error rate and token metrics all look healthy in that case. I wanted to see what it takes to catch that in practice.
 
-In this POC the same prompt and question produced a grounded answer on one run and an invented root cause on the next. Both showed status **OK**. Only the evaluators separated them.
+In this project the same prompt and question produced a grounded answer on one run and an invented root cause on the next. Both showed status **OK**. Only the evaluators separated them.
 
 What it shows:
 
@@ -35,10 +37,10 @@ More detail in [docs/architecture.md](docs/architecture.md).
 
 ## Prerequisites and costs
 
-| Item | Plan | What this POC cost |
+| Item | Plan | What it cost |
 |---|---|---|
 | Grafana Cloud | Free (14 day trial, then Free) | $0. Free plan includes 30k generations and 25M evaluation tokens a month |
-| Anthropic API | Pay as you go, prepaid | **$0.11** for the whole POC: 58,475 input + 11,258 output tokens on Claude Haiku 4.5 (Console, 2026-10-05) |
+| Anthropic API | Pay as you go, prepaid | **$0.11** for the whole project: 58,475 input + 11,258 output tokens on Claude Haiku 4.5 (Console, 2026-10-05) |
 | Grafana judge tokens | Free allowance | Rule page estimate $0.04, inside the free allowance |
 
 Guardrails used: $5 prepaid credit with auto reload off (hard cap), `max_tokens` on every call, 5 LLM calls max per agent run.
@@ -50,8 +52,8 @@ Local tools: Python 3.10+ (tested on 3.13), Git. Commands below are PowerShell o
 Full setup with screenshots of where each value lives: [docs/setup.md](docs/setup.md).
 
 ```powershell
-git clone https://github.com/g2ai/grafana-agent-observability-poc.git
-cd grafana-agent-observability-poc
+git clone https://github.com/g2ai/grafana-llm-agent-observability.git
+cd grafana-llm-agent-observability
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt

@@ -1,4 +1,4 @@
-"""Demo traffic for the six POC scenarios (brief section 12).
+"""Demo traffic for the demo scenarios.
 
 Run from the repo root with the venv active:
     python scripts/run_scenarios.py --list
@@ -80,7 +80,7 @@ BURST = ["hallucination", "wall_of_text", "tool_error", "hallucination", "wall_o
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Run POC demo scenarios")
+    parser = argparse.ArgumentParser(description="Run demo scenarios")
     parser.add_argument("scenario", nargs="?", default="happy", help="scenario name, 'all' or 'burst'")
     parser.add_argument("--repeat", type=int, default=1, help="how many times to run it")
     parser.add_argument("--delay", type=int, default=0, help="seconds to wait between runs (spread traffic so the 5m alert window sees it)")

@@ -1,6 +1,6 @@
 # Lessons learned
 
-Each point comes from something that happened while building this POC.
+Each point comes from something that happened while building this project.
 
 ## 1. Status OK says nothing about whether the answer is right
 
@@ -88,6 +88,6 @@ The SDK was renamed from `sigil-sdk` to `agento11y`, and the product from "AI Ob
 
 | Item | Amount |
 |---|---|
-| Anthropic API, whole POC | $0.11 (58,475 input + 11,258 output tokens, Claude Haiku 4.5) |
+| Anthropic API, whole project | $0.11 (58,475 input + 11,258 output tokens, Claude Haiku 4.5) |
 | Grafana Cloud | $0 (trial, then Free) |
 | Grafana judge tokens | about $0.04 estimated, inside the free 25M monthly allowance |
