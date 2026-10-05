@@ -79,14 +79,6 @@ python scripts\run_scenarios.py burst --repeat 2 --delay 60
 | `tool_error` | `query_metrics` times out | Red `execute_tool` span. Groundedness 9/10, but root cause judge = false |
 | `burst` | 12 failing runs, 60 s apart | Pass rate 50%, alert **Firing** |
 
-## Screenshots
-
-| | |
-|---|---|
-| ![Same question, invented cause, status OK](docs/images/ungrounded-answer.png) | ![Root cause judge catches it](docs/images/cause-judge-fail.png) |
-| ![Trace with tool error](docs/images/tool-error-trace.png) | ![Evaluation results](docs/images/eval-summary.png) |
-| ![Alert firing](docs/images/alert-firing.png) | ![Groundedness vs root cause](docs/images/groundedness-vs-cause.png) |
-
 ## What I learned
 
 1. **Status OK is not correctness.** Same prompt, same question: one run cited the deploy that caused the errors, the other invented a database link. Both were OK.
