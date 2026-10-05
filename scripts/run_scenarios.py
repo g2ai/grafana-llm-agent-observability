@@ -4,6 +4,7 @@ Run from the repo root with the venv active:
     python scripts/run_scenarios.py --list
     python scripts/run_scenarios.py happy
     python scripts/run_scenarios.py burst            # failure burst to push pass rate under 70%
+    python scripts/run_scenarios.py burst --repeat 2 --delay 90   # spread over ~18 min for the alert
 
 Each run is tagged with scenario=<name> so you can filter conversations in the UI.
 Evaluations only score traffic sent AFTER the rule exists, so create evaluators first.
@@ -82,6 +83,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Run POC demo scenarios")
     parser.add_argument("scenario", nargs="?", default="happy", help="scenario name, 'all' or 'burst'")
     parser.add_argument("--repeat", type=int, default=1, help="how many times to run it")
+    parser.add_argument("--delay", type=int, default=0, help="seconds to wait between runs (spread traffic so the 5m alert window sees it)")
     parser.add_argument("--list", action="store_true", help="list scenarios and exit")
     args = parser.parse_args()
 
@@ -111,6 +113,8 @@ def main() -> None:
             answer = agent.run(s["question"], conversation_id=conv_id, tags={"scenario": name}, **s["options"])
             preview = answer.replace("\n", " ")[:160]
             print(f"[{i}/{len(names)}] {name:14} {conv_id}  ({len(answer)} chars)\n    {preview}...\n")
+            if args.delay and i < len(names):
+                time.sleep(args.delay)
     finally:
         agent.close()
     print("Done. Scores appear in Evaluations after a few minutes (each gate stage adds delay).")
